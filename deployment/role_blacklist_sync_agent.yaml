@@ -1,0 +1,6 @@
+title: "blacklist-sync-agent"
+description: "Custom role for blacklist sync agent permissions"
+stage: "ALPHA"
+includedPermissions:
+- run.routes.invoke
+- bigquery.jobs.create

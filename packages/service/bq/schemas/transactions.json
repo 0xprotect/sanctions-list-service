@@ -1,0 +1,37 @@
+[
+    {
+        "mode": "REQUIRED",
+        "name": "block_number",
+        "type": "INTEGER"
+    },
+    {
+        "mode": "REQUIRED",
+        "name": "block_hash",
+        "type": "STRING"
+    },
+    {
+        "mode": "REQUIRED",
+        "name": "block_timestamp",
+        "type": "TIMESTAMP"
+    },
+    {
+        "mode": "REQUIRED",
+        "name": "hash",
+        "type": "STRING"
+    },
+    {
+        "mode": "REQUIRED",
+        "name": "coinbase",
+        "type": "STRING"
+    },
+    {
+        "mode": "REQUIRED",
+        "name": "from_address",
+        "type": "STRING"
+    },
+    {
+        "mode": "REQUIRED",
+        "name": "to_address",
+        "type": "STRING"
+    }
+]

@@ -1,0 +1,38 @@
+{
+    "name": "@blacklist/monorepo",
+    "version": "0.1.0",
+    "description": "A service and api for ethereum blacklisted addresses",
+    "author": "Jonathan Evans <jonny@edennetwork.io>",
+    "private": true,
+    "scripts": {
+        "api": "yarn workspace @blacklist/api start",
+        "api:build": "yarn workspace @blacklist/api build",
+        "api:integrate": "yarn workspace @blacklist/api integrate",
+        "service": "yarn workspace @blacklist/service start",
+        "service:build": "yarn workspace @blacklist/service build",
+        "service:integration": "yarn workspace @blacklist/service integration",
+        "lint": "yarn workspace @blacklist/api lint && yarn workspace @blacklist/service lint"
+    },
+    "license": "MIT",
+    "engines": {
+        "node": ">=16.13.2"
+    },
+    "workspaces": {
+        "packages": [
+            "packages/*"
+        ]
+    },
+    "devDependencies": {
+        "@types/chai": "^4.3.0",
+        "@types/dotenv": "^8.2.0",
+        "@types/mocha": "^9.1.0",
+        "@types/node": "^16.11.22",
+        "chai": "^4.3.4",
+        "mocha": "^9.1.3",
+        "supertest": "^6.2.4",
+        "ts-node": "^10.7.0",
+        "tslint": "^6.1.3",
+        "tslint-no-unused-expression-chai": "^0.1.4",
+        "typescript": "^4.5.4"
+    }
+}

@@ -1,0 +1,5 @@
+title: "blacklist-readonly"
+description: "Custom role for blacklist api permissions"
+stage: "ALPHA"
+includedPermissions:
+- bigquery.jobs.create
