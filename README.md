@@ -1,6 +1,6 @@
 # Sanctions list service
 
-monorepo for sanctions list sync service, public api and ethereum smart contract
+monorepo for sanctions list sync service and public api
 
 ## packages
 
