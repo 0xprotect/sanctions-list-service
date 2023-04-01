@@ -60,20 +60,18 @@ async function getChecksumValues(): Promise<ISha256Values> {
     const response = await fetch(checksumUrl)
     const htmlString = await response.text()
     const dom = new JSDOM(htmlString)
-    const element = dom.window.document.querySelector('meta[property="og:description"]')
-    const content = element?.getAttribute('content')
+    const targetElements = Array.from(dom.window.document.querySelectorAll('p'))
+        .filter((el) => files.some((file) => el.textContent?.includes(file.name) && el.textContent?.includes('SHA-256:')))
     const results: ISha256Values = {}
-    for (const _file of files) {
-        const altRegex = new RegExp(`\\s${_file.name.replace('.', '\\.')}\\s{4}SHA-256:\\s(?<sha256>[a-fA-F0-9]{64})`, 'g')
-        const matches = content?.matchAll(altRegex)
-        const matchesArray = Array.from(matches ?? [], (m) => m.groups?.sha256)
-        if (matchesArray.length === 0) {
-            throw new Error(`ofac.getSha256Values() - no hash value for ofac sanction list file: ${_file.name}`)
-        } else if (matchesArray.length > 1) {
-            throw new Error(`ofac.getSha256Values() - multiple hash values for ofac sanction list file: ${_file.name}`)
-        } else {
-            results[_file.name] = matchesArray[0] as string
+    targetElements.forEach((el) => {
+        const fileName = el.textContent?.match(/(.+)\n/)?.[1]
+        const sha256 = el.textContent?.match(/SHA-256: (.+)/)?.[1]
+        if (fileName && sha256) {
+            results[fileName] = sha256
         }
+    })
+    if (Object.keys(results).length < files.length) {
+        throw new Error('Not all hash values could be extracted from the OFAC webpage.')
     }
     console.log(JSON.stringify({
         class: 'ofac',
