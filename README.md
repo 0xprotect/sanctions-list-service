@@ -1,11 +1,11 @@
-# Blacklist
+# Sanctions list service
 
-monorepo for blacklist sync service, public api and ethereum smart contract
+monorepo for sanctions list sync service and public api
 
 ## packages
 
-- api: public api for users to check if builders have processed transactions including blacklisted addresses
-- service: sync features to maintain an up to date blacklist in various formats. Discord notification endpoint enabling alerts to a predefined discord channel
+- api: public api for users to check if builders have processed transactions including sanctioned addresses
+- service: sync features to maintain an up to date sanctions list in various formats. Discord notification endpoint enabling alerts to a predefined discord channel
 
 see package README's for more details
 
