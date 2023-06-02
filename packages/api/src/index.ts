@@ -11,6 +11,7 @@ app.get("/", async (_req: any, res: any) => {
 })
 
 app.get("/blacklist", async (req: any, res: any) => {
+  res.set('Access-Control-Allow-Origin', '*');
   try {
     const result = await cloudStorage.getBlacklist()
     res.status(200).json(result)
@@ -24,6 +25,7 @@ app.get("/blacklist", async (req: any, res: any) => {
 })
 
 app.get("/builder/:builder/:days", async (req: any, res: any) => {
+  res.set('Access-Control-Allow-Origin', '*');
   try {
     let result: any
     if (isNaN(req.params.days)) {
