@@ -64,8 +64,8 @@ async function getChecksumValues(): Promise<ISha256Values> {
         .filter((el) => files.some((file) => el.textContent?.includes(file.name) && el.textContent?.includes('SHA-256:')))
     const results: ISha256Values = {}
     targetElements.forEach((el) => {
-        const fileName = el.textContent?.match(/(.+)\n/)?.[1]
-        const sha256 = el.textContent?.match(/SHA-256: (.+)/)?.[1]
+        const fileName = el.textContent?.match(/(\S+)\s+SHA-256:/)?.[1]
+        const sha256 = el.textContent?.match(/SHA-256:\s(.+?)\s/)?.[1]
         if (fileName && sha256) {
             results[fileName] = sha256
         }
